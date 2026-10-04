@@ -15,7 +15,8 @@ class CatList extends Component {
           age: 3,
           color: "Gray",
           gender: "Male",
-          imgSrc: "https://example.com/cats/murzik.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/32131245/pexels-photo-32131245.jpeg",
         },
         {
           id: 2,
@@ -24,7 +25,8 @@ class CatList extends Component {
           age: 2,
           color: "White",
           gender: "Female",
-          imgSrc: "https://example.com/cats/luna.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/10912323/pexels-photo-10912323.jpeg",
         },
         {
           id: 3,
@@ -33,7 +35,8 @@ class CatList extends Component {
           age: 5,
           color: "Orange",
           gender: "Male",
-          imgSrc: "https://example.com/cats/barsik.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/8942602/pexels-photo-8942602.jpeg",
         },
         {
           id: 4,
@@ -42,7 +45,8 @@ class CatList extends Component {
           age: 1,
           color: "White and Gray",
           gender: "Female",
-          imgSrc: "https://example.com/cats/milka.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/14630894/pexels-photo-14630894.jpeg",
         },
         {
           id: 5,
@@ -51,7 +55,8 @@ class CatList extends Component {
           age: 4,
           color: "Golden",
           gender: "Male",
-          imgSrc: "https://example.com/cats/tom.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/17685161/pexels-photo-17685161.jpeg",
         },
         {
           id: 6,
@@ -59,8 +64,9 @@ class CatList extends Component {
           breed: "Persian",
           age: 6,
           color: "White",
-          gender: "Female",
-          imgSrc: "https://example.com/cats/sima.jpg",
+          gender: "Male",
+          imgSrc:
+            "https://images.pexels.com/photos/17885998/pexels-photo-17885998.jpeg",
         },
         {
           id: 7,
@@ -69,7 +75,8 @@ class CatList extends Component {
           age: 3,
           color: "Brown",
           gender: "Male",
-          imgSrc: "https://example.com/cats/oscar.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/13986951/pexels-photo-13986951.jpeg",
         },
         {
           id: 8,
@@ -78,14 +85,25 @@ class CatList extends Component {
           age: 2,
           color: "Silver",
           gender: "Female",
-          imgSrc: "https://example.com/cats/cleo.jpg",
+          imgSrc:
+            "https://images.pexels.com/photos/20374460/pexels-photo-20374460.jpeg",
         },
       ],
     };
   }
 
+  mapCat = (cat) => {
+    return <CatListItem key={cat.id} {...cat}></CatListItem>;
+  };
+
   render() {
-    return <></>;
+    const { cats } = this.state;
+
+    return (
+      <div className={styles.CatsCardsContainer}>
+        <ul className={styles.CatsList}>{cats.map(this.mapCat)}</ul>
+      </div>
+    );
   }
 }
 
