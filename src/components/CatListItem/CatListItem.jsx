@@ -1,7 +1,14 @@
+import React from "react";
 import styles from "./CatListItem.module.css";
 
 function CatListItem({ id, name, breed, age, color, gender, imgSrc }) {
   const genderColor = { color: gender === "Female" ? "rgb(236, 0, 137)" : "blue" };
+
+  const [isSave, setSaved] = React.useState(false);
+
+  const saveHandler = () => {
+    setSaved((prev) => !prev);
+  };
 
   return (
     <li className={styles.CardItem}>
@@ -21,6 +28,13 @@ function CatListItem({ id, name, breed, age, color, gender, imgSrc }) {
           </p>
         </div>
       </div>
+
+      <button
+        className={isSave ? `${styles.Saved} ${styles.Active}` : styles.Saved}
+        onClick={saveHandler}
+      >
+        <i className="fa-solid fa-heart"></i>
+      </button>
     </li>
   );
 }
