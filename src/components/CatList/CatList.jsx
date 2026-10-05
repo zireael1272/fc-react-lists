@@ -89,6 +89,7 @@ class CatList extends Component {
             "https://images.pexels.com/photos/20374460/pexels-photo-20374460.jpeg",
         },
       ],
+      color: "",
     };
   }
 
@@ -96,12 +97,26 @@ class CatList extends Component {
     return <CatListItem key={cat.id} {...cat}></CatListItem>;
   };
 
+  HandleCatColor = (e) => {
+    this.setState({ color: e.target.value });
+  };
+
   render() {
-    const { cats } = this.state;
+    const { cats, color } = this.state;
+
+    const filterCat = cats.filter((cat) =>
+      cat.color.toLowerCase().startsWith(color.toLowerCase()),
+    );
 
     return (
       <div className={styles.CatsCardsContainer}>
-        <ul className={styles.CatsList}>{cats.map(this.mapCat)}</ul>
+        <input
+          placeholder="Enter cat`s color"
+          value={this.state.color}
+          onChange={this.HandleCatColor}
+          className={styles.Input}
+        ></input>
+        <ul className={styles.CatsList}>{filterCat.map(this.mapCat)}</ul>
       </div>
     );
   }
