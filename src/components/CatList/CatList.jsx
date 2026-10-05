@@ -97,8 +97,8 @@ class CatList extends Component {
     return <CatListItem key={cat.id} {...cat}></CatListItem>;
   };
 
-  HandleCatColor = (e) => {
-    this.setState({ color: e.target.value });
+  HandleCatColor = ({ target: { value } }) => {
+    this.setState({ color: value });
   };
 
   render() {
@@ -112,7 +112,7 @@ class CatList extends Component {
       <div className={styles.CatsCardsContainer}>
         <input
           placeholder="Enter cat`s color"
-          value={this.state.color}
+          value={color}
           onChange={this.HandleCatColor}
           className={styles.Input}
         ></input>
